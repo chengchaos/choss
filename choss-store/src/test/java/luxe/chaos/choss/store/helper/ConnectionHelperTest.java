@@ -3,17 +3,17 @@ package luxe.chaos.choss.store.helper;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.Table;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class HbaseHelperTest {
+public class ConnectionHelperTest {
 
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HbaseHelperTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionHelperTest.class);
 
 //    private HBaseConnection helper = HBaseConnection.getINSTANCE();
 
@@ -25,10 +25,10 @@ public class HbaseHelperTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        try (HbaseHelper helper = HbaseHelper.getINSTANCE()) {
+        try (ConnectionHelper helper = ConnectionHelper.getINSTANCE()) {
             conn = helper.getOrCreateConnection();
             LOGGER.info("conn 1 => {}", conn.isClosed());
-            Assert.assertNotNull("conn not null!", conn);
+            Assertions.assertNotNull( conn, "conn not null!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,7 +53,7 @@ public class HbaseHelperTest {
     public void getTableTest() {
 
         String tableName= "chengchao";
-        try (HbaseHelper hc = HbaseHelper.getINSTANCE()){
+        try (ConnectionHelper hc = ConnectionHelper.getINSTANCE()){
             Table table = hc.getTable(tableName);
             LOGGER.info("table => {}", table);
         } catch (Exception e) {

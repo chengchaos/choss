@@ -12,12 +12,12 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class HbaseHelper implements AutoCloseable {
+public class ConnectionHelper implements AutoCloseable {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HbaseHelper.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConnectionHelper.class);
 
 
-    private static final HbaseHelper INSTANCE = new HbaseHelper();
+    private static final ConnectionHelper INSTANCE = new ConnectionHelper();
 
     private static final String ZK_QUORUM = "hbase.zookeeper.quorum";
     private static final AtomicInteger AI = new AtomicInteger(0);
@@ -27,11 +27,11 @@ public class HbaseHelper implements AutoCloseable {
     private  Connection conn;
 
 
-    public static HbaseHelper getINSTANCE() {
+    public static ConnectionHelper getINSTANCE() {
         return INSTANCE;
     }
 
-    private HbaseHelper() {
+    private ConnectionHelper() {
         super();
     }
 
@@ -72,7 +72,7 @@ public class HbaseHelper implements AutoCloseable {
         }
     }
 
-    public static void closeConn(HbaseHelper instance) {
+    public static void closeConn(ConnectionHelper instance) {
         try {
             instance.close();
         } catch (Exception e) {

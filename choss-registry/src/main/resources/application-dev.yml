@@ -3,12 +3,19 @@ server:
 spring:
   application:
     name: choss-registry
+  profiles: dev
 
 eureka:
   instance:
+    hostname: localhost
+    client:
+      registerWithEureka: false
+      fetchRegistry: false
+      serviceUrl:
+        defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+      enableSelfPreservation: false
+      eviction-interval-time-in-ms: 5000
+      registry-fetch-interval-senconds: 5
     prefer-ip-address: true # 使用 IP 地址定义注册中心地址
-logging:
-  config: classpath:logback-spring.xml
-  file: registry-center.log
-  level:
-    root: info
