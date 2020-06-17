@@ -1,5 +1,9 @@
-/target/
+HELP.md
+**/target/
+**/**/*.log
 !.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
 
 ### STS ###
 .apt_generated
@@ -29,3 +33,7 @@
 
 ### React ###
 **/node_modules
+build/
+
+### VS Code ###
+.vscode/

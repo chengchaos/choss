@@ -1,0 +1,14 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: choss-registry
+
+eureka:
+  instance:
+    prefer-ip-address: true # 使用 IP 地址定义注册中心地址
+logging:
+  config: classpath:logback-spring.xml
+  file: registry-center.log
+  level:
+    root: info
