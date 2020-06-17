@@ -1,0 +1,22 @@
+
+server:
+  port: 8081
+
+spring:
+  profiles: dev
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.111:3306/chaos?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: mp9b80:oNO4i
+    maxPoolSize: 200
+    minIdle: 2
+    validationTimeout: 300000
+    idleTimeout: 600000
+    connectionTestQuery: 'select version'
+
+
+
+mybatis:
+  config-location: mybatis-config.xml
+  mapper-locations:

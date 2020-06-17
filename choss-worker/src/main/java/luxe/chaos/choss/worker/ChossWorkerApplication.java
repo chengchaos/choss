@@ -1,13 +1,13 @@
-package luxe.chaos.choss;
+package luxe.chaos.choss.worker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ChossApplication {
+public class ChossWorkerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ChossApplication.class, args);
+		SpringApplication.run(ChossWorkerApplication.class, args);
 	}
 
 }

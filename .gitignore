@@ -1,6 +1,7 @@
 HELP.md
 target/
-**/**/*.log
+**/*.log
+**/logPath_IS_UNDEFINED
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**

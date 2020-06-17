@@ -1,10 +1,10 @@
-package luxe.chaos.choss;
+package luxe.chaos.choss.worker;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ChossApplicationTests {
+class ChossWorkerApplicationTests {
 
 	@Test
 	void contextLoads() {
