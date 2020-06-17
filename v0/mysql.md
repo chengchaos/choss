@@ -131,7 +131,7 @@ hbase(main):001:0> status
 
 user_info
 
-| field | type | description | 
+| field | type | description |
 | ---- | ---- | ---- |
 | user_id | bigint| primary key |
 | user_name | varchar(50) | user name union |
@@ -142,7 +142,7 @@ user_info
 
 token_info
 
-| field | type | description | 
+| field | type | description |
 | ---- | ---- | ---- |
 | token | varchar(32) | primary key |
 | expire_itme | int(11) | expire time, default 7 day |
@@ -153,7 +153,7 @@ token_info
 
 auth:
 
-| field | type | description | 
+| field | type | description |
 | ---- | ---- | ---- |
 | bucket_name | varchar(32) | bucket name |
 | target_token | varchar(32) | ... |
@@ -162,7 +162,7 @@ auth:
 
 bucket_info :
 
-| field | type | description | 
+| field | type | description |
 | ---- | ---- | ---- |
 | bucket_id | varchar(32) | primary key |
 | bucket_name | varchar(32) | bukket name |
@@ -179,12 +179,13 @@ CREATE DATABASE `choss` /*!40100 COLLATE 'utf8mb4_general_ci' */
 use `choss`;
 
 CREATE TABLE `user_info` (
-	`user_id` BIGINT NOT NULL AUTO_INCREMENT,
+	`id` VARCHAR(50) NOT NULL,
 	`user_name` VARCHAR(50) NOT NULL,
-	`password` VARCHAR(255) NOT NULL,
-	`detail` VARCHAR(255) NULL,
+	`user_pwd` VARCHAR(255) NOT NULL,
+	`user_detail` VARCHAR(255) NULL,
+    `system_role` VARCHAR(255) NULL,
 	`create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (`user_id`),
+	PRIMARY KEY (`id`),
 	UNIQUE INDEX `user_name` (`user_name`)
 )
 COMMENT='user_info'
@@ -194,24 +195,25 @@ ENGINE=InnoDB
 
 
 CREATE TABLE `token_info` (
-	`token` VARCHAR(50) NOT NULL,
+	`id` VARCHAR(50) NOT NULL,
+	`user_id` VARCHAR(50) NOT NULL,
 	`is_active` INT NOT NULL,
 	`expire_time` BIGINT NOT NULL,
-	`user_id` BIGINT NOT NULL,
 	`create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`refresh_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (`token`)
+	PRIMARY KEY (`id`)
 )
 COLLATE='utf8mb4_general_ci'
 ENGINE=InnoDB
 ;
 
 CREATE TABLE `bucket_info` (
-	`id` BIGINT NOT NULL AUTO_INCREMENT,
-	`user_id` BIGINT NOT NULL,
+	`id` VARCHAR(200) NOT NULL,
+	`user_id` VARCHAR(50) NOT NULL,
 	`bucket_name` VARCHAR(50) NOT NULL,
-	`detail` VARCHAR(50) NULL,
-	`create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+	`bucket_detail` VARCHAR(50) NULL,
+	`create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
 )
 COMMENT='bucket_info'
 COLLATE='utf8mb4_general_ci'
@@ -219,10 +221,10 @@ ENGINE=InnoDB
 ;
 
 CREATE TABLE `auth_info` (
-	`bucket_id` BIGINT NOT NULL,
-	`token` VARCHAR(50) NOT NULL,
+	`bucket_id` VARCHAR(50) NOT NULL,
+	`target_token` VARCHAR(50) NOT NULL,
 	`create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (`bucket_id`, `token`)
+	PRIMARY KEY (`bucket_id`, `target_token`)
 )
 COMMENT='auth_info'
 COLLATE='utf8mb4_general_ci'
@@ -236,4 +238,3 @@ ENGINE=InnoDB
 
 
 
- 

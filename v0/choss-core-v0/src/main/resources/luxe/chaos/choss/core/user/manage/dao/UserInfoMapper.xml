@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="luxe.chaos.choss.core.user.manage.dao.UserInfoMapper">
+
+    <!-- This UserInfoResultMap ref to UserInfo Bean -->
+    <resultMap id="UserInfoResultMap" type="luxe.chaos.choss.core.user.manage.model.UserInfo">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_pwd" property="userPwd" jdbcType="VARCHAR"/>
+        <result column="system_role" property="systemRole" jdbcType="VARCHAR"/>
+        <result column="user_detail" property="userDetail" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+    <insert id="addUser">
+        INSERT INTO
+        user_info (
+        id, user_name, user_pwd, system_role, user_detail, create_time
+        )
+        VALUES (
+        #{userInfo.id}, #{userInfo.userName}, #{userInfo.userPwd},
+        #{userInfo.systemRole}, #{userInfo.userDetail}, #{userInfo.createTime}
+        )
+    </insert>
+
+    <delete id="deleteUser" parameterType="String">
+        DELETE FROM
+            user_info
+        WHERE
+            id = #{userId}
+    </delete>
+
+    <update id="updateUser" parameterType="luxe.chaos.choss.core.user.manage.model.UserInfo">
+        <if test = " userInfo.id != null and userInfo.id != '' ">
+            UPDATE user_info
+            <set>
+                <if test=" userInfo.userPwd != null and userInfo.userPwd != '' ">
+                    user_pwd = #{userInfo.userPwd},
+                </if>
+                <if test="userInfo.userDetail != null and userInfo.userDetail != '' ">
+                    user_detail = #{userInfo.userDetail},
+                </if>
+            </set>
+            WHERE id = #{userInfo.id}
+        </if>
+    </update>
+
+
+    <select id="getUserByName" parameterType="String" resultMap="UserInfoResultMap">
+        select * from user_info where
+        user_name = #{userName}
+    </select>
+
+
+    <select id="getUserById" resultMap="UserInfoResultMap">
+        SELECT * FROM user_info
+        WHERE id = #{userId}
+    </select>
+
+    <select id="checkPassword" resultMap="UserInfoResultMap">
+        <![CDATA[
+        SELECT * FROM `user_info`
+        WHERE `user_pwd` = #{userPwd}
+        AND   `user_name` = #{userName}
+        ]]>
+    </select>
+
+
+</mapper>
