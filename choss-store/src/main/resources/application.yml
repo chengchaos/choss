@@ -1,0 +1,10 @@
+
+server:
+  port: 8088
+
+spring:
+  application:
+    name: choss-store
+  profiles:
+    active: dev
+

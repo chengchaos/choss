@@ -1,0 +1,13 @@
+
+server:
+  port: 8088
+
+spring:
+  application:
+    name: choss-store
+  profiles: dev
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.0.111:8761/eureka/

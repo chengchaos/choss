@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="luxe.chaos.choss.worker.dao.BucketMapper">
+
+    <resultMap id="bucketResultMap" type="luxe.chaos.choss.worker.entity.Bucket">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="detail" jdbcType="VARCHAR" property="detail" />
+    </resultMap>
+
+
+    <insert id="add"
+            parameterType="luxe.chaos.choss.worker.entity.ServiceAuth">
+
+        INSERT INTO bucket
+        (id, user_id, create_time, name, detail)
+        VALUES
+        (#{bucket.id}, #{bucket.userId}, #{bucket.createTime},
+        #{bucket.name}, #{bucket.detail}
+        )
+
+    </insert>
+
+    <delete id="delete" parameterType="string">
+        DELETE FROM bucket
+        WHERE id = #{id}
+    </delete>
+
+    <update id="update"
+            parameterType="luxe.chaos.choss.worker.entity.ServiceAuth">
+        UPDATE bucket
+        SET detail = #{bucket.detail}
+        , name = #{bucket.name}
+        WHERE id = #{bucket.id}
+    </update>
+
+    <select id="getById" parameterType="string" resultMap="bucketResultMap">
+        SELECT *
+        FROM bucket
+        WHERE id = #{id}
+    </select>
+
+
+
+    <select id="getByUserId" parameterType="string" resultMap="bucketResultMap">
+        SELECT *
+        FROM bucket
+        WHERE user_id = #{userId}
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="getByTokenId" parameterType="string" resultMap="bucketResultMap">
+        SELECT a.*
+        FROM bucket a, service_auth b
+        WHERE a.id = b.bucket_id
+        AND b.token_id = #{tokenId}
+        ORDER BY a.create_time DESC
+    </select>
+</mapper>

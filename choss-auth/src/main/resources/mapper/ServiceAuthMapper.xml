@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="luxe.chaos.choss.worker.dao.ServiceAuthMapper">
+
+    <resultMap id="serviceAuthResultMap" type="luxe.chaos.choss.worker.entity.ServiceAuth">
+        <result column="bucket_id" jdbcType="VARCHAR" property="bucketId"/>
+        <result column="token_id" jdbcType="INTEGER" property="tokenId"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
+
+    </resultMap>
+
+
+    <insert id="add"
+            parameterType="luxe.chaos.choss.worker.entity.ServiceAuth">
+
+        INSERT INTO service_auth
+        (bucket_id, token_id, create_time)
+        VALUES
+        (#{auth.bucketId}, #{auth.tokenId}, #{auth.createTime} )
+
+    </insert>
+
+    <delete id="delete" parameterType="string">
+        DELETE FROM service_auth
+        WHERE bucket_id = #{bucketId}
+        AND token_id = #{tokenId}
+    </delete>
+
+    <delete id="deleteByTokenId" parameterType="string">
+        DELETE FROM service_auth
+        WHERE token_id = #{tokenId}
+    </delete>
+
+    <delete id="deleteByBucketId" parameterType="string">
+        DELETE FROM service_auth
+        WHERE bucket_id = #{bucketId}
+    </delete>
+
+
+
+    <select id="getServiceAuth" parameterType="string" resultMap="serviceAuthResultMap">
+        SELECT *
+        FROM service_auth
+        WHERE bucket_id = #{bucketId}
+        AND token_id = #{tokenId}
+    </select>
+
+</mapper>

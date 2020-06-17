@@ -1,0 +1,14 @@
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: choss-worker
+  profiles:
+    active: dev
+
+
+mybatis:
+  config-location: mybatis-config.xml
+  mapper-locations:
