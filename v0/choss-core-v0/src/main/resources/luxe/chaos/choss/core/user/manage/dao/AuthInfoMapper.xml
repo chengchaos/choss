@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="luxe.chaos.choss.core.user.manage.dao.AuthInfoMapper">
+
+    <!-- This UserInfoResultMap ref to UserInfo Bean -->
+    <resultMap id="AuthInfoResultMap" type="luxe.chaos.choss.core.user.manage.model.AuthInfo">
+        <result column="bucket_id" property="bucketId" jdbcType="VARCHAR"/>
+        <result column="target_token" property="targetToken" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <insert id="addAuth">
+        INSERT INTO auth_info (
+            bucket_id, target_token, create_time
+        )
+        VALUES (
+            #{authInfo.bucketId}, #{authInfo.targetToken}, #{authInfo.createTime}
+        )
+    </insert>
+
+    <select id="getAuth" resultMap="AuthInfoResultMap">
+        SELECT * FROM auth_info
+        WHERE bucket_id = #{bucketId}
+        AND target_token = #{targetToken}
+
+    </select>
+
+    <delete id="deleteAuth">
+        DELETE FROM auth_info
+        WHERE bucket_id = #{bucketId}
+        AND target_token = #{targetToken}
+    </delete>
+
+    <delete id="deleteAuthByToken">
+        DELETE FROM auth_info
+        WHERE target_token = #{targetToken}
+    </delete>
+
+    <delete id="deleteAuthByBucket">
+        DELETE FROM auth_info
+        WHERE bucket_id = #{bucketId}
+    </delete>
+</mapper>

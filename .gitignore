@@ -2,6 +2,7 @@ HELP.md
 target/
 **/*.log
 **/logPath_IS_UNDEFINED
+**/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
@@ -23,10 +24,17 @@ target/
 
 ### NetBeans ###
 /nbproject/private/
+/build/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### MAVEN ###
+**/target
+
+### React ###
+**/node_modules
 build/
 
 ### VS Code ###
