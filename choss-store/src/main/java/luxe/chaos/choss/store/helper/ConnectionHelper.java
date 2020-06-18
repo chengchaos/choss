@@ -24,7 +24,7 @@ public class ConnectionHelper implements AutoCloseable {
 
 
     private Configuration config;
-    private  Connection conn;
+    private Connection conn;
 
 
     public static ConnectionHelper getINSTANCE() {
@@ -59,8 +59,7 @@ public class ConnectionHelper implements AutoCloseable {
     }
 
 
-
-    public Table getTable(String tableName) throws IOException  {
+    public Table getTable(String tableName) throws IOException {
         return this.getOrCreateConnection()
                 .getTable(TableName.valueOf(tableName));
     }

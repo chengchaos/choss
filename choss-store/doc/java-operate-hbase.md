@@ -43,7 +43,53 @@ HBase 检索结果模型
 ### 依赖
 
 ```xml
-org.apache.hbase
-hbase-client
-1.2.4
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-client</artifactId>
+			<version>1.2.4</version>
+			<exclusions>
+				<exclusion>
+					<groupId>io.netty</groupId>
+					<artifactId>netty-all</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+```
+
+### Hadoop 环境变量
+
+
+Windows 的用户，需要下载 ：
+
+
+然后设定环境变量：
+
+```
+HADOOP_HOME=C:\works\local\jvm\hadoop-common-2.2.0
+CLASSPATH=%CLASSPATH%;%HADOOP_HOME\bin\winutils.exe
+PATH=%PATH%;%HADOOP_HOME%\bin
+```
+
+
+### protobuf 版本问题
+
+抛出类似的异常： `ClassNotFoundException: com.google.protobuf.LiteralByteString`
+
+参考这里：
+
+https://www.cnblogs.com/ao-xiang/p/10871558.html
+
+```xml
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-shaded-client</artifactId>
+			<version>${hbase.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>io.netty</groupId>
+					<artifactId>netty-all</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 ```
