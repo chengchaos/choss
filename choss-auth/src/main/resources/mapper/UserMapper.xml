@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="luxe.chaos.choss.worker.dao.UserMapper">
-    <resultMap id="userResultMap" type="luxe.chaos.choss.worker.entity.User">
+<mapper namespace="luxe.chaos.choss.auth.dao.UserMapper">
+    <resultMap id="userResultMap" type="luxe.chaos.choss.auth.entity.User">
         <result column="id" jdbcType="VARCHAR" property="id"/>
         <result column="account" jdbcType="VARCHAR" property="account"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -24,7 +24,7 @@
     </select>
 
     <insert id="create"
-            parameterType="luxe.chaos.choss.worker.entity.User">
+            parameterType="luxe.chaos.choss.auth.entity.User">
 
         INSERT INTO users
         (id, account, name, password)

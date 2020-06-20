@@ -1,10 +1,11 @@
 package luxe.chaos.choss.worker.service;
 
 import io.netty.buffer.ByteBufUtil;
-import luxe.chaos.choss.worker.ChossWorkerApplication;
-import luxe.chaos.choss.worker.beans.PaginationDataInput;
-import luxe.chaos.choss.worker.beans.PaginationDataOutput;
-import luxe.chaos.choss.worker.entity.User;
+import luxe.chaos.choss.auth.ChossWorkerApplication;
+import luxe.chaos.choss.auth.service.UserService;
+import luxe.chaos.choss.entity.User;
+import luxe.chaos.choss.util.PaginationDataInput;
+import luxe.chaos.choss.util.PaginationDataOutput;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;

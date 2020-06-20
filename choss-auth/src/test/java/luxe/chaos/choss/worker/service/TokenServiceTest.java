@@ -1,9 +1,10 @@
 package luxe.chaos.choss.worker.service;
 
 
+import luxe.chaos.choss.auth.service.TokenService;
 import luxe.chaos.choss.util.CodingHelper;
-import luxe.chaos.choss.worker.ChossWorkerApplication;
-import luxe.chaos.choss.worker.entity.Token;
+import luxe.chaos.choss.auth.ChossWorkerApplication;
+import luxe.chaos.choss.entity.Token;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -90,4 +90,18 @@ public class StoreObjectSummary
     public void setAttrs(Map<String, String> attrs) {
         this.attrs = attrs;
     }
+
+    @Override
+    public String toString() {
+        return "StoreObjectSummary{" +
+                "id='" + id + '\'' +
+                ", key='" + key + '\'' +
+                ", name='" + name + '\'' +
+                ", length=" + length +
+                ", mediaType='" + mediaType + '\'' +
+                ", lastModifyTime=" + lastModifyTime +
+                ", bucket='" + bucket + '\'' +
+                ", attrs=" + attrs +
+                '}';
+    }
 }

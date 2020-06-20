@@ -55,6 +55,14 @@
 	</distributionManagement>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>luxe.chaos</groupId>
+			<artifactId>choss-base</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -126,24 +134,14 @@
 
 
 		<!-- HBase is use guava 16.0 version -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>16.0</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.google.guava</groupId>-->
+<!--			<artifactId>guava</artifactId>-->
+<!--			<version>16.0</version>-->
+<!--		</dependency>-->
 
 		<!-- HDFS -->
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-hdfs</artifactId>
-			<version>${hadoop.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>servlet-api</groupId>
-					<artifactId>javax.servlet</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+
 
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
@@ -154,8 +152,60 @@
 					<groupId>servlet-api</groupId>
 					<artifactId>javax.servlet</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-hdfs</artifactId>
+			<version>${hadoop.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>servlet-api</groupId>
+					<artifactId>javax.servlet</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>org.apache.hadoop</groupId>-->
+<!--			<artifactId>hadoop-client</artifactId>-->
+<!--			<version>${hadoop.version}</version>-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>servlet-api</groupId>-->
+<!--					<artifactId>javax.servlet</artifactId>-->
+<!--				</exclusion>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.slf4j</groupId>-->
+<!--					<artifactId>slf4j-log4j12</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.apache.hadoop</groupId>-->
+<!--			<artifactId>hadoop-mapreduce-client-core</artifactId>-->
+<!--			<version>${hadoop.version}</version>-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>servlet-api</groupId>-->
+<!--					<artifactId>javax.servlet</artifactId>-->
+<!--				</exclusion>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.slf4j</groupId>-->
+<!--					<artifactId>slf4j-log4j12</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
@@ -166,6 +216,14 @@
 				<exclusion>
 					<groupId>io.netty</groupId>
 					<artifactId>netty-all</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>servlet-api</groupId>
+					<artifactId>javax.servlet</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>

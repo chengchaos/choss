@@ -149,10 +149,10 @@ mybatis:
 
 ### 4, 代码
 
-luxe.chaos.choss.worker.config.DataSourceConfiguration.java
+luxe.chaos.choss.auth.config.DataSourceConfiguration.java
 
 ```java
-package luxe.chaos.choss.worker.config;
+package luxe.chaos.choss.auth.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.datasource.unpooled.UnpooledDataSourceFactory;
@@ -197,7 +197,7 @@ public class DataSourceConfiguration {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(DataSourceConfiguration.class);
 
-    static final String MAPPER_BASE_PACKAGE = "luxe.chaos.choss.worker.dao";
+    static final String MAPPER_BASE_PACKAGE = "luxe.chaos.choss.auth.dao";
 
     public static class HikariDataSourceFactory extends UnpooledDataSourceFactory {
         public HikariDataSourceFactory() {

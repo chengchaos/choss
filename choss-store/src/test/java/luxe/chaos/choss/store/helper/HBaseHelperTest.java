@@ -1,5 +1,6 @@
 package luxe.chaos.choss.store.helper;
 
+import luxe.chaos.choss.store.beans.StoreConstants;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.junit.jupiter.api.Test;
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class HBaseHelperTest {
 
@@ -25,6 +27,34 @@ public class HBaseHelperTest {
     }
 
     @Test
+    public void createTableTest2() {
+        String tb = "choss_dir_seq";
+        String cf = StoreConstants.CF_NAME_BUCKET_DIR_SEQ;
+        boolean result = new HBaseHelper(ConnectionHelper.getINSTANCE())
+                .createTable(tb, new String[]{cf}, null);
+
+        LOGGER.info("result => {}", result);
+    }
+
+    @Test
+    public void deleteTable() {
+        String[] tableNames = {
+                "chengchao",
+                "chengchaos_my-photos",
+                "hos_dir_chengchao_photos",
+                "hos_obj_chengchao_photos"
+
+        };
+
+        HBaseHelper hBaseHelper = new HBaseHelper(ConnectionHelper.getINSTANCE());
+
+        Stream.of(tableNames)
+                .forEach(hBaseHelper::deleteTable);
+
+    }
+
+
+    @Test
     public void addDataTest() {
 
         boolean result = new HBaseHelper(ConnectionHelper.getINSTANCE())
@@ -33,6 +63,7 @@ public class HBaseHelperTest {
 
         LOGGER.info("result => {}", result);
     }
+
 
 
     @Test

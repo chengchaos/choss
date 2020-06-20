@@ -30,4 +30,28 @@ public class StoreObject implements AutoCloseable {
             this.response.close();
         }
     }
+
+    public ObjectMetaData getObjectMetaData() {
+        return objectMetaData;
+    }
+
+    public void setObjectMetaData(ObjectMetaData objectMetaData) {
+        this.objectMetaData = objectMetaData;
+    }
+
+    public InputStream getInputStream() {
+        return inputStream;
+    }
+
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
+    public Response getResponse() {
+        return response;
+    }
+
+    public void setResponse(Response response) {
+        this.response = response;
+    }
 }

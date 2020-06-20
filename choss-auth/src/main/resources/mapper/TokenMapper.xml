@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="luxe.chaos.choss.worker.dao.TokenMapper">
+<mapper namespace="luxe.chaos.choss.auth.dao.TokenMapper">
 
-    <resultMap id="tokenResultMap" type="luxe.chaos.choss.worker.entity.Token">
+    <resultMap id="tokenResultMap" type="luxe.chaos.choss.auth.entity.Token">
         <result column="id" jdbcType="VARCHAR" property="id"/>
         <result column="expire_time" jdbcType="INTEGER" property="expireTime"/>
         <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
@@ -17,7 +17,7 @@
             keyProperty="id" keyColumn="id"
             -->
     <insert id="add"
-            parameterType="luxe.chaos.choss.worker.entity.Token">
+            parameterType="luxe.chaos.choss.auth.entity.Token">
 
         INSERT INTO token
         (id, expire_time, user_id, create_time, refresh_time)

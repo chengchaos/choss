@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="luxe.chaos.choss.worker.dao.BucketMapper">
+<mapper namespace="luxe.chaos.choss.auth.dao.BucketMapper">
 
-    <resultMap id="bucketResultMap" type="luxe.chaos.choss.worker.entity.Bucket">
+    <resultMap id="bucketResultMap" type="luxe.chaos.choss.auth.entity.Bucket">
         <result column="id" jdbcType="VARCHAR" property="id"/>
         <result column="user_id" jdbcType="INTEGER" property="userId"/>
         <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
@@ -13,7 +13,7 @@
 
 
     <insert id="add"
-            parameterType="luxe.chaos.choss.worker.entity.ServiceAuth">
+            parameterType="luxe.chaos.choss.auth.entity.ServiceAuth">
 
         INSERT INTO bucket
         (id, user_id, create_time, name, detail)
@@ -30,7 +30,7 @@
     </delete>
 
     <update id="update"
-            parameterType="luxe.chaos.choss.worker.entity.ServiceAuth">
+            parameterType="luxe.chaos.choss.auth.entity.ServiceAuth">
         UPDATE bucket
         SET detail = #{bucket.detail}
         , name = #{bucket.name}
