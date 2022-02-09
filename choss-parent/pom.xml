@@ -24,7 +24,7 @@
 		<spring-cloud.version>Hoxton.SR5</spring-cloud.version>
 		<scala.version>2.11.12</scala.version>
 		<hbase.version>1.2.11</hbase.version>
-		<hadoop.version>2.6.0</hadoop.version>
+		<hadoop.version>2.10.1</hadoop.version>
 	</properties>
 
 
